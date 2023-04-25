@@ -2,7 +2,7 @@
 import { reactive } from "vue";
 import { useRoute } from "vue-router"
 import Header from "../components/Header.vue";
-import Account from "../components/Account.vue"
+import Profile from "../components/Profile.vue"
 const route = useRoute()
 const state = reactive({
     searchQuery:""
@@ -16,6 +16,6 @@ if(!!route.query["q"]){
     <v-text-field v-model="state.searchQuery" placeholder="検索..." color="blue" autofocus clearable variant="underlined" class="ml-2 mt-1 pt-1"></v-text-field>
     <v-list lines="two">
         <v-list-subheader>検索結果</v-list-subheader>
-        <Account name="OPSTID" opstidId="d1fd17c6b612" avatarPath="icon.svg" to="/p"></Account>
+        <Profile name="OPSTID" opstidId="d1fd17c6b612" avatarPath="icon.svg" to="/settings"></Profile>
     </v-list>
 </template>

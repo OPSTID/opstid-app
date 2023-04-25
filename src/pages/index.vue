@@ -1,13 +1,10 @@
 <script setup>
 import Header from "../components/Header.vue"
-import Account from "../components/Account.vue"
+import Profile from "../components/Profile.vue"
 
-const helloWorld = () => {
-    alert("Hello World")
-}
 </script>
 <template>
-    <v-list-item style="height:56px;padding-right:0;">
+    <v-list-item style="height:56px;padding-left:0;apadding-right:0;">
         <v-list-item-title class="text-h6 font-weight-bold">ホーム</v-list-item-title>
         <template v-slot:append>
             <v-btn icon elevation="0" to="/search">
@@ -32,6 +29,6 @@ const helloWorld = () => {
     </v-list-item>
     <v-list lines="two">
         <v-list-subheader>自分のプロフィール</v-list-subheader>
-        <Account avatarPath="icon.svg" name="OPSTID" opstidId="d1fd17c6b612" to="/p"></Account>
+        <Profile avatarPath="icon.svg" name="OPSTID" opstidId="d1fd17c6b612" to="/p"></Profile>
     </v-list>
 </template>

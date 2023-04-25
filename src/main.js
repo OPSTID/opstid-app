@@ -17,6 +17,7 @@ import App from "./App.vue"
 // START Pages
 import pageIndex from "./pages/index.vue"
 import pageP from "./pages/p.vue"
+import pageShare from "./pages/share.vue"
 import pageSearch from "./pages/search.vue"
 import pageSettings from "./pages/settings.vue"
 import pageNotFound from "./pages/notfound.vue"
@@ -33,6 +34,10 @@ const routes = [
         component: pageP
     },
     {
+        path: "/share/:myOpstidId",
+        component: pageShare
+    },
+    {
         path: "/search",
         component: pageSearch
     },
@@ -41,13 +46,13 @@ const routes = [
         component: pageSettings
     },
     // 404 page
-    { path: '/:catchAll(.*)', component: pageNotFound } // ココ
+    { path: '/:catchAll(.*)', component: pageNotFound }
 ]
 
 // create router
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
 })
 
 // init vuetify, the UI Library
