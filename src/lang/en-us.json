@@ -1,0 +1,20 @@
+{
+    "pages":{
+        "index":{
+            "title":"Home",
+            "headerActions":{
+                "tooltips":{
+                    "searchForProfile":"Search for Profile",
+                    "createNewProfile":"Create a New Profile"
+                },
+                "other":{
+                    "settings":"Settings",
+                    "terms":"Terms",
+                    "about":"About"
+                }
+            },
+            "seeAllMyProfile":"See All My Profile",
+            "recentActivities":"Recent Activities"
+        }
+    }
+}

@@ -2,12 +2,14 @@
   <v-app>
     <v-container>
       <router-view></router-view>
+      
+      <p class="text-caption text-grey mt-6 ml-3">(C) 2023 OPSTID<br>v1.0.0 with sl2023.04.27</p>
     </v-container>
   </v-app> 
 </template>
 <style scoped>
 .v-container{
-  max-width: 700px;
+  max-width: 630px;
   padding-top:7px;
 }
 .slide-fade-enter-active {
