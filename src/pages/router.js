@@ -8,6 +8,7 @@ import pageMy from "./my.vue"
 import pageChangeMainProfile from "./changeMainProfile.vue"
 import pageSearch from "./search.vue"
 import pageSettings from "./settings.vue"
+import pageBlockedProfiles from "./blockedProfiles.vue"
 import pageAbout from "./about.vue"
 import pageNotFound from "./notfound.vue"
 // END Pages
@@ -41,6 +42,10 @@ const routes = [
     {
         path: "/settings",
         component: pageSettings
+    },
+    {
+        path: "/settings/blocked-profiles",
+        component: pageBlockedProfiles
     },
     {
         path: "/about",
