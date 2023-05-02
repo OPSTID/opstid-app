@@ -245,7 +245,7 @@ setTimeout(generateProfileData, 500)
         </v-list>
         <!-- account blocked message -->
         <div v-else class="mt-6">
-            <p class="text-h6 font-weight-bold text-center">@{{ state.profile.id }} はブロックされています</p>
+            <p class="text-h6 font-weight-bold">@{{ state.profile.id }} はブロックされています</p>
             <p class="text-body-2 text-grey mt-2">あなたは以前、このプロフィールをブロックしました。<br>「ブロック中」ボタンをクリックしてブロックを解除すると、内容を確認できます。</p>
     </div>
 </div></template>
