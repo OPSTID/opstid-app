@@ -20,7 +20,7 @@ const generateProfileIconPath = (seed) => {
         </v-list-subheader>
         <Profile name="OPSTID" opstidId="d1fd17c6b612" avatarPath="/icon.svg" to="/p" lines="two" hasEditButton hasShareButton></Profile>
         <div class="text-right">
-            <v-btn size="small" variant="text" color="indigo" append-icon="mdi-arrow-right" rounded to="/my/change-main-profile">メインプロフィールを変更</v-btn>
+            <v-btn size="small" variant="text" color="blue" append-icon="mdi-arrow-right" rounded to="/my/change-main-profile">メインプロフィールを変更</v-btn>
         </div>
     </v-list>
     

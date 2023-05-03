@@ -10,7 +10,21 @@
 </head>
 
 <body>
-  
+  <!-- For Internet Explorer -->
+  <script>
+    (function () {
+      var isIe = function() {
+        var ua = navigator.userAgent;
+        return ua.indexOf('MSIE ') > -1 || ua.indexOf('Trident/') > -1;
+      }
+
+      if(isIe()){
+        // if accessed by IE, redirect to "unsupported-browser.html"
+        location.replace("/unsupported-browser.html");
+      }
+    })();
+  </script>
+
   <style>
     .v-application__wrap {
       min-height: auto !important;

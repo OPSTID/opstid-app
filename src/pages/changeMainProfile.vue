@@ -13,7 +13,7 @@ watchEffect(() => {
 <template>
     <Header title="メインプロフィールの変更" hasBackButton></Header>
 
-    <v-radio-group v-model="selectedProfile" class="mt-2">
+    <v-radio-group v-model="selectedProfile" class="mt-2" color="blue">
         <v-radio value="d1fd17c6b612">
             <template v-slot:label>
                 <Profile name="OPSTID" opstidId="d1fd17c6b612" avatarPath="/icon.svg"></Profile>

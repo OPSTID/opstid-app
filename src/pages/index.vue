@@ -36,7 +36,7 @@ import generateProfileAvatarPath from "../functions/generateProfileAvatarPath";
         <Profile avatarPath="icon.svg" name="OPSTID" opstidId="d1fd17c6b612" to="/p"></Profile>
         
         <div class="text-right">
-            <v-btn size="small" variant="text" color="indigo" append-icon="mdi-arrow-right" rounded to="/my">{{ $t("pages.index.seeAllMyProfile") }}</v-btn>
+            <v-btn size="small" variant="text" color="blue" append-icon="mdi-arrow-right" rounded to="/my">{{ $t("pages.index.seeAllMyProfile") }}</v-btn>
         </div>
     </v-list>
     <v-list lines="two">
