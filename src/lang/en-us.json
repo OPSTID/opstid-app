@@ -4,12 +4,12 @@
             "title":"Home",
             "headerActions":{
                 "tooltips":{
-                    "searchForProfile":"Search for Profile",
+                    "settings":"Settings",
                     "createNewProfile":"Create a New Profile"
                 },
                 "other":{
-                    "settings":"Settings",
                     "terms":"Terms",
+                    "cautions":"Cautions",
                     "about":"About"
                 }
             },

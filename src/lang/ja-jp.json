@@ -4,12 +4,12 @@
             "title":"ホーム",
             "headerActions":{
                 "tooltips":{
-                    "searchForProfile":"プロフィールを検索",
+                    "settings":"設定",
                     "createNewProfile":"プロフィールを作成"
                 },
                 "other":{
-                    "settings":"設定",
                     "terms":"利用規約",
+                    "cautions":"注意事項",
                     "about":"このアプリについて"
                 }
             },

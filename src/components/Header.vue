@@ -14,12 +14,14 @@
         </template>
         <v-list-item-title class="text-h6 font-weight-bold">{{ title }}
         </v-list-item-title>
+        <v-list-item-subtitle>{{ subtitle }}</v-list-item-subtitle>
     </v-list-item>
 </template>
 <script>
 export default {
     props:{
         title: String,
+        subtitle: String,
         hasHomeButton: Boolean,
         hasBackButton: Boolean
     }

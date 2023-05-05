@@ -28,7 +28,7 @@ const acceptTerms = () => {
 </script>
 <template>
   <v-app>
-    <v-container>
+    <v-container style="position:relative;">
       <router-view></router-view>
 
       <!-- initial setup modal-->
