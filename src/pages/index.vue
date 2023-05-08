@@ -49,11 +49,12 @@ watchEffect(() => {
     <v-app-bar>
         <v-container class="d-flex align-center">
             <v-app-bar-title class="font-weight-bold">
-                <v-scroll-y-reverse-transition leave-absolute>
+                <!--<v-scroll-y-reverse-transition leave-absolute>
                     <p v-if="state.currentTab === 'recommended'">おすすめ</p>
                     <p v-else-if="state.currentTab === 'following'">フォロー中</p>
                     <p v-else-if="state.currentTab === 'my'">自分のプロフィール</p>
-                </v-scroll-y-reverse-transition>
+                </v-scroll-y-reverse-transition>-->
+                ホーム
             </v-app-bar-title>
             <v-btn icon flat>
                 <v-icon>mdi-plus</v-icon>
