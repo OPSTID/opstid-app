@@ -13,7 +13,16 @@ const generateProfileIconPath = (seed) => {
 }
 </script>
 <template>
-    <Header title="自分のプロフィール一覧" hasBackButton></Header>
+    <v-app-bar>
+        <v-container class="d-flex align-center">
+            <v-btn icon flat class="mr-1" @click="$router.back()">
+                <v-icon>mdi-arrow-left</v-icon>
+                <v-tooltip activator="parent" location="bottom">戻る</v-tooltip>
+            </v-btn>
+            <v-app-bar-title class="text-h6 font-weight-bold">自分のプロフィール</v-app-bar-title>
+            <v-btn icon="mdi-plus"></v-btn>
+        </v-container>
+    </v-app-bar>
     <v-main>
         <v-list>
             <v-list-subheader>
