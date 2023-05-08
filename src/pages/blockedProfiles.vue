@@ -28,7 +28,7 @@ const loadBlockedProfiles = () => {
             state.blockedProfiles = profiles
             state.isLoadingBlockedProfiles = false;
         });
-    },500)
+    }, 500)
 }
 
 const unblockProfile = () => {
@@ -46,22 +46,24 @@ loadBlockedProfiles()
 </script>
 <template>
     <Header title="ブロックしたプロフィール" hasBackButton></Header>
-    <div v-if="state.isLoadingBlockedProfiles" class="text-center mt-6">
-        <v-progress-circular indeterminate color="blue" size="32"></v-progress-circular>
-    </div>
-    <div v-else class="pl-5 pr-5">
-        <v-list class="mt-2" v-if="state.blockedProfiles.length > 0">
-            <p class="text-grey text-caption mb-4">あなたがブロックしたプロフィールの一覧です。それぞれのプロフィールをクリックするとブロックを解除できます。</p>
-            <Profile v-for="profile in state.blockedProfiles    " :name="profile.name" :opstidId="profile.id"
-                :avatarPath="generateProfileAvatarPath(profile.id)"
-                @click="state.unblockProfileDialog.targetProfileId = profile.id; state.isActive.unblockProfileDialog = true">
-            </Profile>
-        </v-list>
-        <div v-else class="mt-6">
-            <p class="text-h6 font-weight-bold">ブロックしているプロフィールはありません</p>
-            <p class="text-body-2 text-grey mt-2">問題のあるプロフィールを見つけたときは、プロフィールページ右上のメニューからプロフィールをブロックして内容を非表示にできます。</p>
+    <v-main>
+        <div v-if="state.isLoadingBlockedProfiles" class="text-center mt-3">
+            <v-progress-circular indeterminate color="blue" size="32"></v-progress-circular>
         </div>
-    </div>
+        <div v-else class="pl-5 pr-5">
+            <v-list v-if="state.blockedProfiles.length > 0">
+                <p class="text-grey text-caption mb-4">あなたがブロックしたプロフィールの一覧です。それぞれのプロフィールをクリックするとブロックを解除できます。</p>
+                <Profile v-for="profile in  state.blockedProfiles     " :name="profile.name" :opstidId="profile.id"
+                    :avatarPath="generateProfileAvatarPath(profile.id)"
+                    @click="state.unblockProfileDialog.targetProfileId = profile.id; state.isActive.unblockProfileDialog = true">
+                </Profile>
+            </v-list>
+            <div v-else>
+                <p class="text-h6 font-weight-bold">ブロックしているプロフィールはありません</p>
+                <p class="text-body-2 text-grey mt-2">問題のあるプロフィールを見つけたときは、プロフィールページ右上のメニューからプロフィールをブロックして内容を非表示にできます。</p>
+            </div>
+        </div>
+    </v-main>
 
     <v-dialog v-model=" state.isActive.unblockProfileDialog " max-width="400" close-on-back>
         <v-container>

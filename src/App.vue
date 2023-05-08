@@ -64,22 +64,3 @@ const acceptTerms = () => {
     </v-container>
   </v-app>
 </template>
-<style>
-.v-container {
-  max-width: 630px;
-  padding-top: 7px;
-}
-
-.v-progress-circular__underlay {
-  opacity: 0 !important;
-}
-
-.slide-fade-leave-active {
-  display:none;
-}
-.slide-fade-enter-from,
-.slide-fade-leave-to {
-  transform: translateY(12px);
-  opacity: 0;
-}
-</style>

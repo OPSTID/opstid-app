@@ -3,11 +3,11 @@ import Header from '../components/Header.vue';
 </script>
 <template>
     <Header title="注意事項" hasBackButton></Header>
-    <div class="pl-5 pr-5 mt-3">
+    <v-main>
         <p class="text-body-2 text-grey">このページでは、OPSTID初回アクセス時に表示される注意事項を確認することができます。</p>
 
         <v-divider class="mt-6"></v-divider>
-        
+
         <p class="text-grey mt-6">OPSTID はSNSやゲームなどのアカウントをまとめて、みんなに共有できるアプリです。以下の内容および利用規約をご確認の上、ご利用ください。</p>
         <p class="mt-3 font-weight-bold">OPSTIDで作成したプロフィールURLの管理には十分ご注意ください</p>
         <p class="mt-1 text-grey">
@@ -22,5 +22,5 @@ import Header from '../components/Header.vue';
         <p class="mt-3 text-grey">OPSTIDは MITライセンス
             に基づき公開されている、オープンソースソフトウェアです。無料でご利用いただけます。<br>詳しくは利用開始後、ホーム画面の右上のボタンから「このアプリについて」→「OPSTID
             on GitHub」からご確認ください。</p>
-    </div>
+    </v-main>
 </template>

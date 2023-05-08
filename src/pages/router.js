@@ -5,10 +5,10 @@ import pageIndex from "./index.vue"
 import pageP from "./p.vue"
 import pageShare from "./share.vue"
 import pageMy from "./my.vue"
-import pageChangeMainProfile from "./changeMainProfile.vue"
 import pageSearch from "./search.vue"
 import pageScan from "./scan.vue"
 import pageSettings from "./settings.vue"
+import pageChangeMainProfile from "./changeMainProfile.vue"
 import pageBlockedProfiles from "./blockedProfiles.vue"
 import pageAbout from "./about.vue"
 import pageCautions from "./cautions.vue"
@@ -34,10 +34,6 @@ const routes = [
         component: pageMy
     },
     {
-        path: "/my/change-main-profile",
-        component: pageChangeMainProfile
-    },
-    {
         path: "/search",
         component: pageSearch
     },
@@ -48,6 +44,10 @@ const routes = [
     {
         path: "/settings",
         component: pageSettings
+    },
+    {
+        path: "/settings/change-main-profile",
+        component: pageChangeMainProfile
     },
     {
         path: "/settings/blocked-profiles",

@@ -18,9 +18,12 @@ watchEffect(() => {
 </script>
 <template>
     <Header title="検索" hasBackButton></Header>
-    <v-text-field v-model="state.searchQuery" placeholder="検索..." autofocus clearable color="blue" variant="solo" density="compact" prepend-inner-icon="mdi-magnify"></v-text-field>
-    <v-list lines="two">
-        <v-list-subheader>検索結果</v-list-subheader>
-        <Profile name="OPSTID" opstidId="d1fd17c6b612" avatarPath="icon.svg" to="/p"></Profile>
-    </v-list>
+    <v-main>
+        <v-text-field v-model="state.searchQuery" placeholder="検索..." autofocus clearable color="blue" variant="solo"
+            density="compact" prepend-inner-icon="mdi-magnify"></v-text-field>
+        <v-list lines="two">
+            <v-list-subheader>検索結果</v-list-subheader>
+            <Profile name="OPSTID" opstidId="d1fd17c6b612" avatarPath="icon.svg" to="/p"></Profile>
+        </v-list>
+    </v-main>
 </template>

@@ -108,27 +108,25 @@ setTimeout(generateProfileData, 500)
 
 </script>
 <template>
-    <v-list-item style="height:56px;padding-left:0;padding-right:0;">
-        <template v-slot:prepend>
+    <v-app-bar>
+        <v-container class="d-flex align-center">
             <v-btn icon flat @click="$router.back">
                 <v-icon>mdi-arrow-left</v-icon>
                 <v-tooltip activator="parent" location="bottom">戻る</v-tooltip>
             </v-btn>
-        </template>
-        <v-list-item-title>
-            <v-btn icon flat to="/" class="mr-1">
-                <v-avatar size="small">
-                    <v-img src="/icon.svg"></v-img>
-                </v-avatar>
-                <v-tooltip activator="parent" location="bottom">ホームに戻る</v-tooltip>
-            </v-btn>
-        </v-list-item-title>
-        <template v-slot:append v-if="state.profile.isLoaded">
-            <v-btn icon flat to="/share/d1fd17c6b612">
+            <v-app-bar-title>
+                <v-btn icon flat to="/">
+                    <v-avatar size="small">
+                        <v-img src="/icon.svg"></v-img>
+                    </v-avatar>
+                    <v-tooltip activator="parent" location="bottom">ホームに戻る</v-tooltip>
+                </v-btn>
+            </v-app-bar-title>
+            <v-btn icon flat to="/share/d1fd17c6b612" v-if="state.profile.isLoaded">
                 <v-icon>mdi-share-variant</v-icon>
                 <v-tooltip activator="parent" location="bottom">共有</v-tooltip>
             </v-btn>
-            <v-btn icon flat>
+            <v-btn icon flat v-if="state.profile.isLoaded">
                 <v-icon>mdi-dots-vertical</v-icon>
                 <v-menu activator="parent" location="bottom right" close-on-back>
                     <v-list density="compact">
@@ -139,8 +137,64 @@ setTimeout(generateProfileData, 500)
                     </v-list>
                 </v-menu>
             </v-btn>
-        </template>
-    </v-list-item>
+        </v-container>
+    </v-app-bar>
+    <v-main>
+        <!-- error screen -->
+        <div v-if="state.profile.isOccuredError" class="text-grey text-body-2 mt-4">
+            <p class="pl-5 pr-5">
+                An Error Occured. Check your URL don't have errors.
+            </p>
+        </div>
+        <!-- profile loading screen -->
+        <div v-else-if="!state.profile.isLoaded" class="text-center mt-2">
+            <v-progress-circular indeterminate color="blue" size="32"></v-progress-circular>
+        </div>
+        <!-- profile screen-->
+        <div v-else class="pl-5 pr-5">
+            <!-- profile summary -->
+            <div class="text-center">
+                <v-avatar size="70" rounded="0">
+                    <v-img :src="generateProfileAvatarPath(state.profile.id)"></v-img>
+                </v-avatar>
+                <p class="text-h6 font-weight-bold mt-1">{{ state.profile.name }}</p>
+                <p style="margin-top:-6px" class="text-caption text-grey">@{{ state.profile.id }}</p>
+
+                <p class="mt-3">
+                    <v-btn v-if="state.profile.isBlocked" color="red" rounded flat
+                        @click="state.isActive.unblockProfileDialog = true">ブロック中</v-btn>
+                    <v-btn v-else color="green" rounded flat>フォロー中</v-btn>
+                </p>
+                <p class="mt-4" v-if="!state.profile.isBlocked">
+                    <v-chip class="mr-1 mt-1" v-for="      tag       in       state.profile.tags      "
+                        :color="tag.type === 'owner' ? 'blue' : 'green'" :to="`/search?q=tag:${tag.name}`" size="small">
+                        <v-icon size="xs" class="mr-1">mdi-pound</v-icon>{{ tag.name }}
+                    </v-chip>
+                    <v-chip class="mr-1 mt-1" variant="outlined" color="green" size="small"
+                        @click="state.isActive.createMyTagDialog = true">
+                        <v-icon size="small">mdi-plus</v-icon>
+                        <v-tooltip activator="parent" location="bottom" size="small">
+                            Myタグを追加
+                        </v-tooltip>
+                    </v-chip>
+                </p>
+            </div>
+            <!-- account list -->
+            <v-list lines="two" class="mt-5" v-if="!state.profile.isBlocked">
+                <v-list-item v-for="  account   in   state.profile.accounts     ">
+                    <v-list-item-title>{{ account.service }}</v-list-item-title>
+                    <v-list-item-subtitle>{{ account.account }}</v-list-item-subtitle>
+                </v-list-item>
+            </v-list>
+            <!-- account blocked message -->
+            <div v-else class="mt-6">
+                <p class="text-h6 font-weight-bold">@{{ state.profile.id }} はブロックされています</p>
+                <p class="text-body-2 text-grey mt-2">あなたは以前、このプロフィールをブロックしました。<br>「ブロック中」ボタンをクリックしてブロックを解除すると、内容を確認できます。
+                </p>
+            </div>
+        </div>
+    </v-main>
+
     <!-- block profile dialog -->
     <v-dialog v-model="state.isActive.blockProfileDialog" max-width="400" close-on-back>
         <v-container>
@@ -196,56 +250,4 @@ setTimeout(generateProfileData, 500)
             </v-card>
         </v-container>
     </v-dialog>
-
-    <!-- error screen -->
-    <div v-if=" state.profile.isOccuredError " class="mt-6 text-grey text-body-2">
-        <p class="pl-5 pr-5">
-            An Error Occured. Check your URL don't have errors.
-        </p>
-    </div>
-    <!-- profile loading screen -->
-    <div v-else-if=" !state.profile.isLoaded " class="text-center mt-6">
-        <v-progress-circular indeterminate color="blue" size="32"></v-progress-circular>
-    </div>
-    <!-- profile screen-->
-    <div v-else class="pl-5 pr-5">
-        <!-- profile summary -->
-        <div class="text-center mt-4">
-            <v-avatar size="70" rounded="0">
-                <v-img :src=" generateProfileAvatarPath(state.profile.id) "></v-img>
-            </v-avatar>
-            <p class="text-h6 font-weight-bold mt-1">{{ state.profile.name }}</p>
-            <p style="margin-top:-6px" class="text-caption text-grey">@{{ state.profile.id }}</p>
-
-            <p class="mt-3">
-                <v-btn v-if=" state.profile.isBlocked " color="red" rounded flat
-                    @click=" state.isActive.unblockProfileDialog = true ">ブロック中</v-btn>
-                <v-btn v-else color="green" rounded flat>フォロー中</v-btn>
-            </p>
-            <p class="mt-4" v-if=" !state.profile.isBlocked ">
-                <v-chip class="mr-1 mt-1" v-for="    tag     in     state.profile.tags    "
-                    :color=" tag.type === 'owner' ? 'blue' : 'green' " :to=" `/search?q=tag:${tag.name}` " size="small">
-                    <v-icon size="xs" class="mr-1">mdi-pound</v-icon>{{ tag.name }}
-                </v-chip>
-                <v-chip class="mr-1 mt-1" variant="outlined" color="green" size="small"
-                    @click=" state.isActive.createMyTagDialog = true ">
-                    <v-icon size="small">mdi-plus</v-icon>
-                    <v-tooltip activator="parent" location="bottom" size="small">
-                        Myタグを追加
-                    </v-tooltip>
-                </v-chip>
-            </p>
-        </div>
-        <!-- account list -->
-        <v-list lines="two" class="mt-5" v-if=" !state.profile.isBlocked ">
-            <v-list-item v-for="account in state.profile.accounts   ">
-                <v-list-item-title>{{ account.service }}</v-list-item-title>
-                <v-list-item-subtitle>{{ account.account }}</v-list-item-subtitle>
-            </v-list-item>
-        </v-list>
-        <!-- account blocked message -->
-        <div v-else class="mt-6">
-            <p class="text-h6 font-weight-bold">@{{ state.profile.id }} はブロックされています</p>
-            <p class="text-body-2 text-grey mt-2">あなたは以前、このプロフィールをブロックしました。<br>「ブロック中」ボタンをクリックしてブロックを解除すると、内容を確認できます。</p>
-    </div>
-</div></template>
+</template>
