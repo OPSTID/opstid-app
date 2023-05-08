@@ -1,9 +1,10 @@
 <script setup>
 import { reactive, watchEffect } from "vue";
-import { useRoute } from "vue-router"
+import { useRoute, useRouter } from "vue-router"
 import Header from "../components/Header.vue";
 import Profile from "../components/Profile.vue"
 const route = useRoute()
+const router = useRouter()
 const state = reactive({
     searchQuery: ""
 });
@@ -13,7 +14,8 @@ if (!!route.query["q"]) {
 
 // update url query "q" on searchQuery updated
 watchEffect(() => {
-    history.replaceState(null, null, `?q=${encodeURIComponent(state.searchQuery)}`)
+    if(!state.searchQuery) router.replace("/search")
+    else router.replace(`/search?q=${encodeURIComponent(state.searchQuery)}`)
 });
 </script>
 <template>

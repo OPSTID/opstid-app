@@ -10,7 +10,7 @@ import { watchEffect } from "vue";
 const route = useRoute()
 const router = useRouter()
 const state = reactive({
-    currentTab: "reccomended",
+    currentTab: "recommended",
     currentTabName: ""
 })
 
@@ -23,9 +23,6 @@ if (route.query["tab"]) {
         case "following":
             state.currentTab = "following"
             break
-        case "my":
-            state.currentTab = "my"
-            break
     }
 }
 
@@ -37,9 +34,6 @@ watchEffect(() => {
             break
         case "following":
             router.replace("?tab=following")
-            break
-        case "my":
-            router.replace("?tab=my")
             break
     }
 })
@@ -87,7 +81,6 @@ watchEffect(() => {
                 <v-tabs align-tabs="center" v-model="state.currentTab">
                     <v-tab value="recommended">おすすめ</v-tab>
                     <v-tab value="following">フォロー中</v-tab>
-                    <v-tab value="my">自分</v-tab>
                 </v-tabs>
             </v-container>
         </template>
@@ -125,32 +118,6 @@ watchEffect(() => {
             </v-window-item>
             <v-window-item value="following">
                 <v-list lines="two">
-                    <Profile name="OPSTID" opstidId="d1fd17c6b612" avatarPath="/icon.svg" to="/p" hasEditButton
-                        hasShareButton>
-                    </Profile>
-                    <Profile name="ace97b838b9d" opstidId="ace97b838b9d" :avatarPath="generateProfileAvatarPath()" to="/p"
-                        hasEditButton hasShareButton></Profile>
-                    <Profile name="ca972cbe7116" opstidId="ca972cbe7116" :avatarPath="generateProfileAvatarPath()" to="/p"
-                        hasEditButton hasShareButton></Profile>
-                    <Profile name="8554bbc654b8" opstidId="8554bbc654b8" :avatarPath="generateProfileAvatarPath()" to="/p"
-                        hasEditButton hasShareButton></Profile>
-                </v-list>
-            </v-window-item>
-            <v-window-item value="my">
-                <v-list>
-                    <v-list-subheader>
-                        メインプロフィール
-                    </v-list-subheader>
-                    <Profile name="OPSTID" opstidId="d1fd17c6b612" avatarPath="/icon.svg" to="/p" lines="two" hasEditButton
-                        hasShareButton></Profile>
-                    <div class="text-right">
-                        <v-btn size="small" variant="text" color="blue" append-icon="mdi-arrow-right" rounded
-                            to="/settings/change-main-profile">メインプロフィールを変更</v-btn>
-                    </div>
-                </v-list>
-
-                <v-list lines="two">
-                    <v-list-subheader>すべてのプロフィール</v-list-subheader>
                     <Profile name="OPSTID" opstidId="d1fd17c6b612" avatarPath="/icon.svg" to="/p" hasEditButton
                         hasShareButton>
                     </Profile>
