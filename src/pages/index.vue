@@ -78,6 +78,10 @@ watchEffect(() => {
 
         <template v-slot:extension>
             <v-container>
+                <v-tabs align-tabs="center" v-model="state.currentTab">
+                    <v-tab value="recommended">おすすめ</v-tab>
+                    <v-tab value="following">フォロー中</v-tab>
+                </v-tabs>
             </v-container>
         </template>
 
